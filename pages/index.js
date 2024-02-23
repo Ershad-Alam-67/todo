@@ -90,11 +90,11 @@ export async function getServerSideProps() {
   const res = await fetch("http://localhost:3000/api/gettodos")
   const data = await res.json()
   console.log(data, "daa")
+  const onlyIncomplete = data.filter((item) => item.completed === false)
 
-  // Pass data to the page component as props
   return {
     props: {
-      data,
+      data: onlyIncomplete,
     },
   }
 }
